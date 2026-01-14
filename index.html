@@ -667,8 +667,8 @@
     <section class="py-16 bg-gradient-mikan-light text-center border-t-2 border-orange-100">
         <div class="container mx-auto px-4 max-w-xl">
             <h2 class="text-xl md:text-2xl font-bold text-orange-900 mb-6 fade-up">
-                完璧じゃなくていい。自信がなくてもいい。<br>
-                大切なのは、一緒に使ってみること。
+                完璧じゃなくていい。<br class="md:hidden">自信がなくてもいい。<br class="md:hidden">
+                大切なのは、<br class="md:hidden">一緒に使ってみること。
             </h2>
             <p class="text-gray-700 mb-8 leading-relaxed font-medium text-sm text-left fade-up delay-100">
                 子どもに英語を教えられなくても、子どもが「英語を当たり前に感じる環境」はお母さんにしか作れません。<br><br>
@@ -679,7 +679,7 @@
         </div>
     </section>
 
-    <!-- 講師プロフィール (最後に詳しく追加・実績バッジを移動) -->
+    <!-- 講師プロフィール (最後に詳しく追加・実績バッジを移動・TOEIC/英検バッジ削除) -->
     <section class="py-12 md:py-16 bg-white border-t border-gray-200">
         <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-xl font-bold text-center text-gray-800 mb-8 fade-up">講師プロフィール</h2>
@@ -690,10 +690,21 @@
                     </div>
                     <h3 class="text-lg font-bold text-gray-900">Akiha</h3>
                     <div class="text-[10px] bg-white px-3 py-1 rounded-full border border-orange-200 shadow-sm mb-2 text-orange-800 font-bold">語りかけ英語コーチ</div>
+                    
+                    <!-- 実績バッジ（ここに集約・TOEIC/英検は削除） -->
+                    <div class="flex flex-col gap-2 mt-2 w-full">
+                        <span class="bg-yellow-400 text-yellow-900 font-bold py-1 px-2 rounded text-[10px] shadow-sm">
+                            <i class="fas fa-book mr-1"></i>Amazonランキング1位
+                        </span>
+                        <span class="bg-white text-orange-600 font-bold py-1 px-2 rounded text-[10px] shadow-sm border border-orange-200">
+                            <i class="fas fa-crown mr-1"></i>指導実績300名超
+                        </span>
+                    </div>
                 </div>
                 <div class="w-full md:w-2/3 text-gray-700 leading-relaxed space-y-4 text-sm text-left">
                     <p>
-                        <span class="font-bold border-b-2 border-orange-300">早稲田大学国際教養学部卒 / TOEIC965点 / 英検1級</span>
+                        <!-- 早稲田・TOEIC・英検を本文に組み込み強調 -->
+                        <span class="marker-orange font-bold text-base">早稲田大学国際教養学部卒 / TOEIC965点 / 英検1級</span>
                     </p>
                     <p>
                         神奈川県生まれ、2児（8歳・6歳）の母。<br>
@@ -707,19 +718,6 @@
                         現在は「英語が特別視されず、ごく当たり前に使われる日本社会」を目指し、0-6歳のママ向けに語りかけ英語講座を主催。<br>
                         英語が苦手なママから「3ヶ月でこんなに話せるようになるなんて！」と感動の声が続出する人気講座となっている。
                     </p>
-                    
-                    <!-- 実績バッジ（移動分） -->
-                    <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-orange-200">
-                        <span class="bg-red-600 text-white font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md">
-                            <i class="fas fa-check-circle mr-1"></i>TOEIC 965点 / 英検1級
-                        </span>
-                        <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md border border-orange-200">
-                            <i class="fas fa-crown text-yellow-500 mr-1"></i>指導実績300名超
-                        </span>
-                        <span class="bg-yellow-400 text-yellow-900 font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md">
-                            <i class="fas fa-book text-yellow-900 mr-1"></i>Amazonランキング1位
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>
