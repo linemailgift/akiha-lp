@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おうちde語りかけ英語 | AKIHA式5日間無料プログラム</title>
+    <title>おうちde語りかけ英語 | AKIHA式語りかけ英語・習得セミナー</title>
     <meta name="description" content="英語が苦手なママでも大丈夫。中学英語の語りかけだけで、子供が勝手に英語を話し出す魔法のメソッド。">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -13,6 +13,10 @@
     <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+            /* 文字詰め設定（日本語を美しく見せる） */
+            font-feature-settings: "palt";
+            letter-spacing: 0.05em;
         }
         /* マーケ博士風のリッチなグラデーション（オレンジベース） */
         .bg-gradient-mikan-premium {
@@ -24,295 +28,395 @@
         .bg-gradient-gold-orange {
             background: linear-gradient(135deg, #FDBA74 0%, #FB923C 50%, #EA580C 100%);
         }
-        /* リッチなボタン用グラデーション */
+        
+        /* リッチなボタン用グラデーション & 光るアニメーション */
         .btn-gradient-orange {
             background: linear-gradient(to right, #F97316, #DC2626);
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
         .btn-gradient-orange:hover {
             background: linear-gradient(to right, #EA580C, #B91C1C);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.3);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.4);
         }
+        /* ボタンのキラッと光るエフェクト */
+        .btn-gradient-orange::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
         .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         .box-shadow-card {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* スマホで見やすい強調マーカー */
+        .box-shadow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* スマホで見やすい強調マーカー（アニメーション付き） */
         .marker-orange {
             background: linear-gradient(transparent 60%, #FECACA 60%);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            transition: background-size 1s ease 0.5s;
         }
+        .marker-orange.is-visible {
+            background-size: 100% 100%;
+        }
+
+        /* 浮遊アニメーション (Floating) */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-delayed {
+            animation: float 6s ease-in-out infinite 3s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* スクロールアニメーション用クラス - 全て下から出現(fade-up)に統一 */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 順番に表示（Stagger）用の遅延 */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        /* 6つ目の要素用に遅延を追加 */
+        .delay-600 { transition-delay: 0.6s; }
+
     </style>
 </head>
-<body class="bg-orange-50 text-gray-800 antialiased">
+<body class="bg-orange-50 text-gray-800 antialiased text-sm md:text-base leading-relaxed">
 
-    <!-- ヘッダー（権威性バッジ） -->
-    <header class="bg-white py-2 shadow-sm fixed w-full top-0 z-50">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="font-bold text-orange-600 text-lg">AKIHA English</div>
-            <div class="flex gap-2">
-                <!-- オレンジで統一 -->
-                <div class="text-xs font-bold bg-orange-600 text-white py-1 px-3 rounded-full shadow-md">
-                    TOEIC 965点 / 英検1級
-                </div>
-                <div class="text-xs font-bold bg-yellow-400 text-yellow-900 py-1 px-3 rounded-full shadow-md hidden sm:block">
-                    Amazonランキング1位
-                </div>
-            </div>
+    <!-- ヘッダー（ロゴのみシンプルに） -->
+    <header class="bg-white/95 backdrop-blur-sm py-3 shadow-sm fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-4 flex justify-center md:justify-between items-center">
+            <div class="font-bold text-orange-600 text-lg md:text-xl tracking-wider">AKIHA English</div>
         </div>
     </header>
 
     <!-- ファーストビュー -->
     <section class="pt-24 pb-12 bg-gradient-mikan-premium text-white relative overflow-hidden">
-        <!-- 背景装飾 -->
+        <!-- 背景装飾（浮遊アイコン） -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <i class="fas fa-comment-dots text-9xl absolute -top-10 -left-10 transform rotate-12"></i>
-            <i class="fas fa-child text-9xl absolute bottom-0 right-0 transform -rotate-12"></i>
+            <i class="fas fa-comment-dots text-8xl absolute top-10 left-10 text-white floating"></i>
+            <i class="fas fa-heart text-6xl absolute top-1/3 right-10 text-yellow-200 floating-delayed"></i>
+            <i class="fas fa-child text-9xl absolute bottom-0 right-0 text-white transform -rotate-12 opacity-50"></i>
+            <i class="fas fa-star text-5xl absolute bottom-1/4 left-1/4 text-yellow-300 floating"></i>
         </div>
 
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <!-- 実績バッジエリア -->
-            <div class="flex justify-center gap-2 mb-4 flex-wrap">
-                <!-- ここもオレンジ/赤系で統一 -->
-                <span class="bg-red-600 text-white font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-white/30">
-                    <i class="fas fa-check-circle mr-1"></i>TOEIC 965点 / 英検1級
-                </span>
-                <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-yellow-400">
-                    <i class="fas fa-crown text-yellow-500 mr-1"></i>指導実績300名超
-                </span>
-                <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-yellow-400">
-                    <i class="fas fa-book text-yellow-500 mr-1"></i>Amazon1位
-                </span>
-            </div>
-
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+            
+            <!-- キャッチコピー -->
+            <h1 class="text-xl md:text-4xl font-extrabold leading-tight mb-4 drop-shadow-lg fade-up is-visible delay-100">
                 英語が苦手なママでも大丈夫。<br>
-                <span class="text-yellow-100">「教えない」「頑張らない」。</span>
+                <span class="text-yellow-100 relative inline-block mt-1">
+                    「教えない」「頑張らない」。
+                    <svg class="absolute w-full h-3 -bottom-1 left-0 text-yellow-500 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none" /></svg>
+                </span>
             </h1>
             
-            <p class="text-lg md:text-2xl font-bold mb-6 bg-orange-900 bg-opacity-20 inline-block px-4 py-2 rounded-lg border border-white/20">
-                中学英語の“つぶやき”だけで<br class="md:hidden">
-                子どもが「英語を当たり前」に感じる家庭はつくれます。
-            </p>
+            <div class="fade-up is-visible delay-200">
+                <p class="text-sm md:text-xl font-bold mb-6 bg-orange-900 bg-opacity-20 inline-block px-4 py-2 md:px-6 md:py-3 rounded-lg border border-white/20 backdrop-blur-sm text-left md:text-center">
+                    中学英語の“つぶやき”だけで<br class="hidden md:inline">
+                    子どもが「英語を当たり前」に感じる家庭はつくれます。
+                </p>
+            </div>
 
-            <!-- メイン画像 -->
-            <div class="my-6 flex justify-center">
-                 <!-- プレースホルダー画像 -->
-                <div class="w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden border-4 border-white bg-gray-200 aspect-video relative group">
-                     <img src="/api/placeholder/800/450" alt="明葉さんとお子さんが笑顔で話している様子" class="w-full h-full object-cover">
-                     <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
-                        <i class="fas fa-play-circle text-white text-6xl opacity-80"></i>
+            <!-- メイン画像（動画サムネイル） -->
+            <div class="my-6 flex justify-center fade-up is-visible delay-300">
+                <div class="w-full max-w-lg rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden border-4 border-white bg-gray-200 aspect-video relative group cursor-pointer transform transition duration-500 hover:scale-[1.02]">
+                     <!-- ここにちゃんとした動画サムネイル画像を入れてください -->
+                     <img src="/api/placeholder/800/450" alt="動画サムネイル：笑顔で話している様子" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                     <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-10 transition">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-play text-white text-3xl ml-1"></i>
+                        </div>
                      </div>
                 </div>
             </div>
 
-            <!-- オファー -->
-            <div class="bg-white text-gray-800 rounded-xl p-6 max-w-2xl mx-auto shadow-2xl border-4 border-yellow-400 relative">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-600 text-white font-bold px-6 py-1 rounded-full shadow-md text-sm whitespace-nowrap">
-                    このページを見た方限定
+            <!-- オファーエリア（余白を追加して下に配置） -->
+            <!-- mt-10 で動画との間に十分な余白を追加 -->
+            <div class="bg-white text-gray-800 rounded-xl p-1 md:p-6 max-w-xl mx-auto shadow-2xl border-4 border-yellow-400 relative fade-up is-visible delay-400 transform transition hover:-translate-y-1 mt-12">
+                <!-- バッジ修正：スマホで見切れないように横幅制限を緩め、折り返しを許可し、確実に中央配置 -->
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-max max-w-[90vw] z-10">
+                    <div class="bg-red-600 text-white font-bold px-6 py-2 rounded-full shadow-lg text-xs md:text-sm text-center animate-bounce border-2 border-white whitespace-normal leading-tight">
+                        \ このページを見た方限定 /
+                    </div>
                 </div>
-                <p class="font-bold text-orange-600 mb-2">これまで有料講座でしか話してこなかった</p>
-                <h2 class="text-xl md:text-2xl font-black mb-4">「AKIHA式語りかけ英語・習得セミナー」<br>完全版動画を無料プレゼント</h2>
                 
-                <!-- CTAボタン: オレンジグラデーションに変更 -->
-                <a href="#register" class="block w-full btn-gradient-orange text-white font-black text-xl md:text-2xl py-4 rounded-full shadow-lg transform transition animate-pulse">
-                    無料で動画を受け取る <i class="fas fa-chevron-right ml-2"></i>
-                    <div class="text-xs font-normal mt-1 opacity-90">※30秒で視聴スタート</div>
-                </a>
+                <div class="py-6 px-1 mt-2">
+                    <p class="font-bold text-orange-600 mb-1 text-xs md:text-base">これまで有料講座でしか話してこなかった</p>
+                    <h2 class="text-lg md:text-xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600 leading-snug">
+                        「AKIHA式語りかけ英語・習得セミナー」<br class="hidden md:inline">完全版動画を無料プレゼント
+                    </h2>
+                    
+                    <!-- CTAボタン -->
+                    <a href="#register" class="block w-full btn-gradient-orange text-white font-black text-base md:text-xl py-4 rounded-full shadow-lg transform transition">
+                        無料で動画を受け取る <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 共感・お悩みチェック -->
-    <section class="py-12 bg-white">
+    <section class="py-12 md:py-16 bg-white overflow-hidden">
         <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-center text-2xl md:text-3xl font-bold text-orange-800 mb-8">
-                お子さんの将来のために英語を始めたい。<br>
-                <span class="marker-orange">でも、こんな不安はありませんか？</span>
+            <!-- 改行位置の修正 -->
+            <h2 class="text-center text-lg md:text-2xl font-bold text-orange-800 mb-8 leading-relaxed fade-up">
+                お子さんの将来のために<br>英語を始めたい。<br>
+                <span class="marker-orange px-1">でも、こんな不安はありませんか？</span>
             </h2>
 
-            <div class="bg-orange-50 rounded-2xl p-6 md:p-8 shadow-inner border border-orange-100">
+            <div class="bg-orange-50 rounded-2xl p-6 md:p-10 shadow-inner border border-orange-100 fade-up">
                 <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
-                        <span class="font-bold text-gray-700 text-lg">英語で困らない人生を歩んでほしいけど、<span class="text-red-500 border-b-2 border-red-500">自分は英語が苦手</span>。</span>
+                    <li class="flex items-start fade-up delay-100">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mt-0.5 mr-3">
+                            <i class="fas fa-check text-orange-500 text-sm"></i>
+                        </div>
+                        <span class="font-bold text-gray-700 text-sm md:text-base leading-relaxed">英語で困らない人生を歩んでほしいけど、<span class="text-red-500 border-b-2 border-red-500">自分は英語が苦手</span>。</span>
                     </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
-                        <span class="font-bold text-gray-700 text-lg">発音や文法に自信がなく、<span class="text-red-500 border-b-2 border-red-500">教えるのが怖い</span>。</span>
+                    <li class="flex items-start fade-up delay-200">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mt-0.5 mr-3">
+                            <i class="fas fa-check text-orange-500 text-sm"></i>
+                        </div>
+                        <span class="font-bold text-gray-700 text-sm md:text-base leading-relaxed">発音や文法に自信がなく、<span class="text-red-500 border-b-2 border-red-500">教えるのが怖い</span>。</span>
                     </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
-                        <span class="font-bold text-gray-700 text-lg">家で英語を話すのは、正直ちょっと<span class="text-red-500 border-b-2 border-red-500">恥ずかしい</span>。</span>
+                    <li class="flex items-start fade-up delay-300">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mt-0.5 mr-3">
+                            <i class="fas fa-check text-orange-500 text-sm"></i>
+                        </div>
+                        <span class="font-bold text-gray-700 text-sm md:text-base leading-relaxed">家で英語を話すのは、正直ちょっと<span class="text-red-500 border-b-2 border-red-500">恥ずかしい</span>。</span>
                     </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
-                        <span class="font-bold text-gray-700 text-lg">教材を買っても、結局使いこなせず<span class="text-red-500 border-b-2 border-red-500">挫折してしまった</span>。</span>
+                    <li class="flex items-start fade-up delay-400">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mt-0.5 mr-3">
+                            <i class="fas fa-check text-orange-500 text-sm"></i>
+                        </div>
+                        <span class="font-bold text-gray-700 text-sm md:text-base leading-relaxed">教材を買っても、結局使いこなせず<span class="text-red-500 border-b-2 border-red-500">挫折してしまった</span>。</span>
                     </li>
                 </ul>
             </div>
 
-            <div class="mt-8 text-center">
-                <p class="text-lg leading-relaxed">
-                    もし一つでも当てはまったら、それはあなただけの悩みではありません。<br>
-                    そして、うまくいかなかったのは、<span class="font-bold text-orange-600 text-xl">あなたのせいではありません</span>。
+            <div class="mt-8 md:mt-10 text-left fade-up delay-200">
+                <p class="text-sm md:text-base leading-relaxed">
+                    もし一つでも当てはまったら、それはあなただけの悩みではありません。<br class="hidden md:block">
+                    そして、うまくいかなかったのは、<span class="font-bold text-orange-600 text-base border-b-4 border-orange-200">あなたのせいではありません</span>。
                 </p>
-                <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 text-left">
-                    <p class="font-bold text-red-800">多くのお母さんがつまずく理由はたった一つ。</p>
-                    <p class="text-red-700 mt-2 font-bold text-lg">「英語を正しく教えなければならない」と思い込んでしまっていること。</p>
+                <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 md:p-5 rounded-r-lg shadow-sm">
+                    <p class="font-bold text-red-800 text-sm"><i class="fas fa-exclamation-triangle mr-2"></i>多くのお母さんがつまずく理由はたった一つ。</p>
+                    <p class="text-red-700 mt-2 font-bold text-sm md:text-base">「英語を正しく教えなければならない」と思い込んでしまっていること。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ストーリーセクション -->
-    <section class="py-16 bg-orange-50/50">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <div class="text-center mb-8">
-                <span class="bg-orange-100 text-orange-600 font-bold py-1 px-4 rounded-full border border-orange-200">My Story</span>
-                <h2 class="text-3xl font-bold mt-4 text-gray-800">早稲田卒・TOEIC965点。<br>それでも私はアメリカで<span class="text-orange-600">「透明人間」</span>でした。</h2>
+    <section class="py-12 md:py-16 bg-orange-50/50 relative">
+        <div class="absolute top-10 right-0 opacity-5">
+            <i class="fas fa-quote-right text-9xl"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 max-w-3xl relative z-10">
+            <div class="text-center mb-8 fade-up">
+                <span class="bg-white text-orange-600 font-bold py-1 px-4 rounded-full border border-orange-200 text-xs shadow-sm uppercase tracking-widest">My Story</span>
+                <h2 class="text-xl md:text-2xl font-bold mt-4 text-gray-800 leading-tight">
+                    早稲田卒・TOEIC965点。<br>
+                    それでも私はアメリカで<br class="md:hidden"><span class="text-orange-600 text-2xl md:text-3xl inline-block mt-1">「透明人間」</span>でした。
+                </h2>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-6 mb-8">
-                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-orange-300 flex-shrink-0 shadow-lg">
-                    <!-- 明葉さんの顔写真 -->
-                    <img src="/api/placeholder/200/200" alt="Akiha Suzuki" class="w-full h-full object-cover">
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-8 fade-up delay-100">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white ring-4 ring-orange-200 flex-shrink-0 shadow-xl transform hover:rotate-3 transition duration-500">
+                    <!-- 顔写真 -->
+                    <img src="/api/placeholder/200/200" alt="Akiha" class="w-full h-full object-cover">
                 </div>
-                <div>
-                    <p class="text-sm text-gray-500 font-bold mb-1">語りかけ英語コーチ</p>
-                    <h3 class="text-xl font-bold text-gray-800">Akiha（鈴木 明葉）</h3>
-                    <p class="text-sm mt-2 text-gray-600">
+                <div class="text-left bg-white p-5 md:p-6 rounded-2xl shadow-lg relative w-full">
+                    <div class="absolute top-1/2 -left-3 w-6 h-6 bg-white transform -translate-y-1/2 rotate-45 hidden md:block"></div>
+                    <p class="text-xs text-orange-500 font-bold mb-1 tracking-wide">語りかけ英語コーチ</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Akiha</h3>
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
                         今でこそ英語のお仕事をしていますが、実は私自身、長い間「英語が話せないこと」に強いコンプレックスを持っていました。
                         学生時代、必死に勉強して憧れのアメリカ留学へ。でも、いざ現地に行くと、話せない・聞き取れない・輪に入れない。
                     </p>
                 </div>
             </div>
 
-            <div class="prose prose-lg text-gray-700 mx-auto">
+            <div class="prose prose-sm text-gray-700 mx-auto text-left fade-up delay-200">
                 <p>
-                    「もういいわ」とため息をつかれ、まるで自分が<span class="marker-orange font-bold">「透明人間」</span>になったかのような孤独を味わいました。
+                    「もういいわ」とため息をつかれ、まるで自分が<span class="marker-orange font-bold px-1">「透明人間」</span>になったかのような孤独を味わいました。
                     「こんなに頑張ってきたのに、どうして話せないんだろう」
                 </p>
                 <p>
-                    そう悩み続けた私を変えたのは、ある<span class="font-bold text-orange-600">「衝撃の出来事」</span>でした。
+                    そう悩み続けた私を変えたのは、ある<span class="font-bold text-orange-600 text-base md:text-lg">「衝撃の出来事」</span>でした。
                 </p>
 
-                <div class="bg-white p-6 rounded-xl shadow-md my-8 border-l-8 border-orange-400">
-                    <h4 class="font-bold text-lg mb-4 text-orange-800"><i class="fas fa-lightbulb mr-2"></i>私の人生を変えた、ウクライナ人ママの一言</h4>
-                    <p class="mb-4">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg my-8 border-l-8 border-orange-400 transform hover:-translate-y-1 transition duration-300">
+                    <h4 class="font-bold text-base mb-4 text-orange-800 flex items-center"><i class="fas fa-lightbulb text-yellow-400 text-xl mr-3"></i>私の人生を変えた、ウクライナ人ママの一言</h4>
+                    <p class="mb-4 text-sm">
                         再び渡米した際に出会った、ウクライナ人のママ友、ハナ。
-                        ある日、彼女と<span class="font-bold">「子供の予防接種」</span>の話になった時のことです。
+                        ある日、彼女と<span class="font-bold border-b-2 border-orange-200">「子供の予防接種」</span>の話になった時のことです。
                     </p>
-                    <p class="mb-4">
-                        私は頭の中で必死に英作文をしていました。<br>
-                        <span class="text-sm text-gray-500">（予防接種ってvaccinationだよね…受けさせるって使役動詞のget？嫌がるって…）</span><br>
-                        <span class="font-mono bg-gray-100 p-1 rounded text-gray-500 text-sm block mt-1">"I'm planning on getting my child vaccinated..."</span>
-                    </p>
-                    <p class="mb-4 font-bold">
-                        難しく考えすぎて、言葉に詰まり、結局何も言えませんでした。
-                        その横で、ハナはこう言ったのです。
-                    </p>
-                    <div class="bg-orange-50 p-4 rounded-lg border-2 border-orange-200">
-                        <p class="text-xl font-bold text-orange-600">"She will have a shot. But she doesn't like it."</p>
-                        <p class="text-sm text-gray-600 mt-1">（彼女、注射するのよ。でも嫌いなのよね〜）</p>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                            <p class="text-xs text-gray-500 mb-1 font-bold">私の頭の中（思考停止…）</p>
+                            <span class="text-xs text-gray-400">（予防接種ってvaccinationだよね…受けさせるって使役動詞のget？嫌がるって…）</span><br>
+                            <span class="font-mono bg-white p-2 rounded text-gray-500 text-xs block mt-1 border border-gray-100 break-words">"I'm planning on getting my child vaccinated..."</span>
+                        </div>
+                        
+                        <div class="text-center text-gray-300 text-xs"><i class="fas fa-arrow-down"></i> その時、ハナは…</div>
+
+                        <div class="bg-orange-50 p-4 rounded-lg border-2 border-orange-200 shadow-sm relative overflow-hidden">
+                            <div class="absolute -right-4 -bottom-4 text-6xl text-orange-100 opacity-50"><i class="fas fa-quote-right"></i></div>
+                            <p class="text-base md:text-xl font-bold text-orange-600 relative z-10">"She will have a shot. But she doesn't like it."</p>
+                            <p class="text-xs text-gray-600 mt-2 font-bold relative z-10">（彼女、注射するのよ。でも嫌いなのよね〜）</p>
+                        </div>
                     </div>
                 </div>
 
-                <p class="font-bold text-xl text-center mt-8">
+                <p class="font-bold text-base md:text-lg text-left mt-8 p-4 border-2 border-orange-400 rounded-xl inline-block bg-white shadow-md">
                     そこで私は気づきました。<br>
-                    <span class="text-orange-600 text-2xl">「お母さんが先生になる必要はない。<br>知っている言葉を使えばいいんだ！」</span>と。
+                    <span class="text-orange-600 text-lg md:text-xl block mt-2">「お母さんが先生になる必要はない。<br>知っている言葉を使えばいいんだ！」</span>と。
                 </p>
             </div>
         </div>
     </section>
 
     <!-- メソッドセクション（アジサイ比較） -->
-    <section class="py-16 bg-white relative">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold text-center mb-4 text-orange-800">
+    <section class="py-12 md:py-16 bg-white relative overflow-hidden">
+        <!-- 背景装飾 -->
+        <div class="absolute -left-20 top-20 w-64 h-64 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 floating"></div>
+        <div class="absolute -right-20 bottom-20 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 floating-delayed"></div>
+
+        <div class="container mx-auto px-4 max-w-4xl relative z-10">
+            <h2 class="text-lg md:text-2xl font-bold text-center mb-4 text-orange-800 fade-up">
                 英語を教えなくていい。<br>
-                <span class="marker-orange">「魔法のテンプレート」で言い換えるだけ。</span>
+                <span class="marker-orange px-1">「魔法のテンプレート」で言い換えるだけ。</span>
             </h2>
-            <p class="text-center mb-10 text-gray-600">難しい単語を覚える必要はありません。知っている中学単語で「言い換える力」がカギです。</p>
+            <p class="text-left md:text-center mb-10 text-sm text-gray-600 fade-up delay-100">難しい単語を覚える必要はありません。知っている中学単語で「言い換える力」がカギです。</p>
 
             <!-- アジサイの比較図 -->
-            <div class="grid md:grid-cols-2 gap-6 items-center">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
                 <!-- Bad Case -->
-                <div class="bg-gray-100 p-6 rounded-2xl border-2 border-gray-300 relative opacity-70">
-                    <div class="absolute -top-4 left-4 bg-gray-500 text-white font-bold px-4 py-1 rounded-full text-sm">従来の考え方</div>
+                <div class="bg-gray-100 p-6 rounded-2xl border border-gray-300 relative opacity-70 fade-up delay-200">
+                    <div class="absolute -top-3 left-6 bg-gray-500 text-white font-bold px-4 py-1 rounded-full text-xs shadow-md">従来の考え方</div>
                     <div class="text-center mt-4">
-                        <i class="fas fa-times text-6xl text-gray-300 mb-4"></i>
-                        <h3 class="font-bold text-gray-600 mb-2">難しい英語 (Native)</h3>
-                        <p class="text-sm mb-4">アジサイってなんて言うんだっけ？</p>
-                        <div class="bg-white p-3 rounded font-mono text-gray-500 font-bold border border-gray-300">
-                            Hydrangea<br>
-                            <span class="text-xs font-normal">（ハイドランジア）</span>
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-times text-2xl md:text-3xl text-gray-400"></i>
                         </div>
-                        <p class="text-xs text-red-500 mt-2 font-bold">× 覚えても忘れる・発音が難しい</p>
+                        <h3 class="font-bold text-gray-600 mb-2 text-sm">難しい英語 (Native)</h3>
+                        <p class="text-xs mb-4">アジサイってなんて言うんだっけ？</p>
+                        <div class="bg-white p-3 rounded-lg font-mono text-gray-500 font-bold border border-gray-300 text-sm shadow-inner">
+                            Hydrangea<br>
+                            <span class="text-[10px] font-normal">（ハイドランジア）</span>
+                        </div>
+                        <p class="text-[10px] text-red-500 mt-3 font-bold bg-red-50 inline-block px-2 py-1 rounded">× 覚えても忘れる・発音が難しい</p>
                     </div>
                 </div>
 
                 <!-- Good Case -->
-                <div class="bg-orange-50 p-8 rounded-2xl border-4 border-orange-500 relative shadow-xl transform md:scale-105 z-10">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white font-bold px-6 py-2 rounded-full shadow-md">AKIHA式</div>
+                <div class="bg-gradient-to-br from-orange-50 to-white p-6 md:p-8 rounded-2xl border-4 border-orange-500 relative shadow-2xl transform md:scale-105 z-10 fade-up delay-300 hover:scale-110 transition duration-500">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white font-bold px-6 py-2 rounded-full shadow-lg text-xs tracking-wider">AKIHA式</div>
                     <div class="text-center mt-4">
-                        <i class="fas fa-circle-check text-6xl text-orange-500 mb-4 animate-bounce"></i>
-                        <h3 class="font-bold text-orange-800 text-xl mb-2">シンプル英語 (Simple)</h3>
-                        <p class="text-sm mb-4">中1単語だけで言い換える！</p>
-                        <div class="bg-white p-4 rounded-lg font-bold text-orange-600 text-xl border-2 border-orange-200 shadow-sm">
-                            A flower in the rainy season<br>
-                            <span class="text-sm font-normal text-gray-600">（雨季の花）</span>
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                            <i class="fas fa-check text-3xl md:text-4xl text-orange-500"></i>
                         </div>
-                        <p class="text-sm text-orange-600 mt-3 font-bold">◎ 誰にでも伝わる！</p>
+                        <h3 class="font-bold text-orange-800 text-lg md:text-xl mb-2">シンプル英語 (Simple)</h3>
+                        <p class="text-xs mb-4 font-bold text-orange-400">中1単語だけで言い換える！</p>
+                        <div class="bg-white p-4 rounded-xl font-bold text-orange-600 text-base md:text-lg border-2 border-orange-200 shadow-lg relative leading-snug">
+                            A flower in the rainy season<br>
+                            <span class="text-xs font-normal text-gray-600">（雨季の花）</span>
+                            <i class="fas fa-star text-yellow-400 absolute -top-3 -right-3 text-2xl animate-spin-slow"></i>
+                        </div>
+                        <p class="text-xs text-white bg-orange-500 mt-4 font-bold inline-block px-3 py-1 rounded-full shadow-md">◎ 誰にでも伝わる！</p>
                     </div>
                 </div>
             </div>
 
-            <p class="text-center mt-10 text-lg font-bold">
-                この<span class="text-orange-600 text-2xl">「魔法のテンプレート」</span>さえあれば、<br>
+            <p class="text-left mt-10 md:mt-12 text-sm md:text-base font-bold bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500 fade-up delay-400">
+                この<span class="text-orange-600 text-base md:text-lg border-b-2 border-orange-300 mx-1">「魔法のテンプレート」</span>さえあれば、<br class="hidden md:block">
                 英語が苦手なお母さんでも、パズルのように言葉がスラスラ出てくるようになります。
             </p>
         </div>
     </section>
 
-    <!-- 動画オファーセクション: オレンジに統一するため濃いブラウンを使用 -->
-    <section class="py-16 bg-orange-950 text-white">
-        <div class="container mx-auto px-4 text-center max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-orange-200">
+    <!-- 動画オファーセクション -->
+    <section class="py-12 md:py-16 bg-orange-950 text-white relative overflow-hidden">
+        <!-- 背景の光 -->
+        <div class="absolute top-0 left-1/4 w-full h-full bg-gradient-to-b from-orange-900/50 to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 text-center max-w-4xl relative z-10">
+            <h2 class="text-xl md:text-3xl font-bold mb-4 text-orange-200 fade-up">
                 この動画1本で、<br>「英語苦手ママ」を卒業できます。
             </h2>
-            <p class="text-orange-100 mb-8">忙しいママでも、家事の合間に見るだけで「おうち英語」の正解がわかります。</p>
+            <p class="text-orange-100 mb-8 text-sm fade-up delay-100">忙しいママでも、家事の合間に見るだけで「おうち英語」の正解がわかります。</p>
 
             <!-- 動画サムネイル -->
-            <div class="relative w-full max-w-3xl mx-auto aspect-video bg-black rounded-xl shadow-2xl border border-orange-800 mb-8 group cursor-pointer">
-                <img src="/api/placeholder/800/450" alt="Video Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
+            <div class="relative w-full max-w-2xl mx-auto aspect-video bg-black rounded-2xl shadow-2xl border-2 border-orange-700/50 mb-8 group cursor-pointer fade-up delay-200 transform hover:scale-[1.02] transition duration-500">
+                <img src="/api/placeholder/800/450" alt="Video Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition duration-500">
+                
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition border-2 border-white">
-                        <i class="fas fa-play text-3xl ml-2 text-white"></i>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-orange-500 rounded-full animate-ping opacity-75"></div>
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition border-2 border-white relative z-10">
+                            <i class="fas fa-play text-2xl md:text-3xl ml-2 text-white"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="absolute bottom-4 left-4 bg-black bg-opacity-70 px-3 py-1 rounded text-sm text-orange-100">
-                    <i class="fas fa-clock mr-1"></i> 視聴時間：約45分
+                
+                <div class="absolute bottom-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-orange-100 border border-white/20">
+                    <i class="fas fa-clock mr-1 text-orange-500"></i> 視聴時間：約45分
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
-                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 01</div>
+            <div class="grid md:grid-cols-2 gap-3 md:gap-4 text-left max-w-xl mx-auto text-sm fade-up delay-300">
+                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-500 hover:bg-white/10 transition">
+                    <div class="text-orange-300 font-bold text-xs mb-1">Topic 01</div>
                     <div class="font-bold">子供の英語力を劇的に伸ばす「最速の方法」</div>
                 </div>
-                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
-                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 02</div>
+                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-500 hover:bg-white/10 transition">
+                    <div class="text-orange-300 font-bold text-xs mb-1">Topic 02</div>
                     <div class="font-bold">語彙力ゼロでもOK！フレーズが無限に増える「魔法のテンプレート」</div>
                 </div>
-                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
-                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 03</div>
+                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-500 hover:bg-white/10 transition">
+                    <div class="text-orange-300 font-bold text-xs mb-1">Topic 03</div>
                     <div class="font-bold">なぜ挫折する？多くの人がハマる「英語学習の落とし穴」</div>
                 </div>
-                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
-                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 04</div>
+                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-500 hover:bg-white/10 transition">
+                    <div class="text-orange-300 font-bold text-xs mb-1">Topic 04</div>
                     <div class="font-bold">今日から英語が口から出る！「語りかけ実践ワーク」</div>
                 </div>
             </div>
@@ -320,18 +424,18 @@
     </section>
 
     <!-- Q&A 子供の拒絶 -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4 max-w-2xl">
-            <div class="bg-gradient-mikan-light rounded-2xl p-8 shadow-lg relative border border-orange-200">
-                <div class="absolute -top-6 -left-6 bg-orange-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-md border-2 border-white">
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-xl">
+            <div class="bg-gradient-mikan-light rounded-2xl p-6 md:p-8 shadow-xl relative border border-orange-200 fade-up">
+                <div class="absolute -top-5 -left-5 md:-top-6 md:-left-6 bg-orange-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg border-4 border-white transform hover:scale-110 transition">
                     Q
                 </div>
-                <h3 class="text-xl font-bold text-orange-900 mb-4 pl-8">「英語やめて！」と言われたらどうする？</h3>
-                <p class="text-gray-800 leading-relaxed font-medium">
-                    実は、それが<span class="font-bold text-red-500 text-lg">正解の反応</span>なんです。<br>
+                <h3 class="text-base md:text-lg font-bold text-orange-900 mb-4 pl-6">「英語やめて！」と言われたらどうする？</h3>
+                <p class="text-gray-800 leading-relaxed font-medium text-sm text-left">
+                    実は、それが<span class="font-bold text-red-500 text-base md:text-lg border-b-2 border-red-200">正解の反応</span>なんです。<br>
                     私の娘も最初は「日本語で話して！」と嫌がりました。<br><br>
                     その時、私はどうしたか？<br>
-                    <span class="font-bold bg-white px-2 py-1 rounded shadow-sm text-orange-800">無理に続けることはしませんでした。</span><br>
+                    <span class="font-bold bg-white px-3 py-1 rounded shadow-sm text-orange-800 inline-block my-2 border-l-4 border-orange-400">無理に続けることはしませんでした。</span><br>
                     嫌がったらやめる。少し時間をおいて、またしれっとつぶやく（笑）。<br>
                     この繰り返しで、今では娘から「リンゴは英語でバナーナだよ！」とボケてくるほど英語が大好きになりました。
                 </p>
@@ -339,205 +443,217 @@
         </div>
     </section>
 
-    <!-- 豪華特典セクション: ゴールドオレンジグラデーション -->
-    <section class="py-16 bg-gradient-gold-orange text-gray-900 overflow-hidden relative">
+    <!-- 豪華特典セクション -->
+    <section class="py-16 md:py-20 bg-gradient-gold-orange text-gray-900 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent opacity-20"></div>
+
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-10">
-                <div class="inline-block bg-red-600 text-white font-bold px-4 py-1 rounded-full mb-4 animate-bounce shadow-lg">
+            <div class="text-center mb-8 md:mb-10 fade-up">
+                <div class="inline-block bg-red-600 text-white font-bold px-4 py-1 rounded-full mb-4 animate-bounce shadow-lg text-xs border-2 border-white/30">
                     さらに！このページ限定
                 </div>
-                <h2 class="text-3xl md:text-5xl font-black text-white drop-shadow-md">
-                    豪華5大特典を<br>無料プレゼント！
+                <h2 class="text-xl md:text-4xl font-black text-white drop-shadow-md leading-tight">
+                    豪華5大特典を<br class="md:hidden">無料プレゼント！
                 </h2>
-                <p class="font-bold text-white mt-4 text-xl drop-shadow-sm">「何をつぶやけばいいかわからない」をゼロにします。</p>
+                <p class="font-bold text-white mt-4 text-sm md:text-lg drop-shadow-sm">「何をつぶやけばいいかわからない」をゼロにします。</p>
             </div>
 
             <!-- 特典カードグリッド -->
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
-                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 01</div>
-                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
-                         <i class="fas fa-book text-4xl text-orange-400"></i>
+            <div class="grid md:grid-cols-3 gap-5 md:gap-6 max-w-4xl mx-auto">
+                <!-- 特典1 (余白を拡大: p-5 -> p-6) -->
+                <div class="bg-white rounded-xl p-6 shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-1 border-b-4 border-orange-500 fade-up delay-100">
+                    <div class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded inline-block mb-3">特典 01</div>
+                    <div class="h-24 md:h-28 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden relative group">
+                         <i class="fas fa-book text-3xl md:text-4xl text-orange-300 group-hover:scale-110 transition duration-300"></i>
+                         <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </div>
-                    <h3 class="font-bold text-lg leading-tight mb-2">ベストセラー書籍「おうちde語りかけ英語」元原稿</h3>
-                    <p class="text-xs text-gray-600">有料級のノウハウを全公開！読むだけでマインドが変わります。</p>
+                    <h3 class="font-bold text-base leading-tight mb-2">ベストセラー書籍「おうちde語りかけ英語」元原稿</h3>
+                    <p class="text-[10px] text-gray-600 leading-tight">有料級のノウハウを全公開！読むだけでマインドが変わります。</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
-                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 02</div>
-                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
-                         <i class="fas fa-tooth text-4xl text-orange-400"></i>
+                <!-- 特典2 -->
+                <div class="bg-white rounded-xl p-6 shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-1 border-b-4 border-orange-500 fade-up delay-200">
+                    <div class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded inline-block mb-3">特典 02</div>
+                    <div class="h-24 md:h-28 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden relative group">
+                         <i class="fas fa-tooth text-3xl md:text-4xl text-orange-300 group-hover:scale-110 transition duration-300"></i>
+                         <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </div>
-                    <h3 class="font-bold text-lg leading-tight mb-2">今日から使える！語りかけ歯磨きフレーズ集</h3>
-                    <p class="text-xs text-gray-600">毎日の習慣だからこそ効果絶大！そのまま読むだけでOK。</p>
+                    <h3 class="font-bold text-base leading-tight mb-2">今日から使える！語りかけ歯磨きフレーズ集</h3>
+                    <p class="text-[10px] text-gray-600 leading-tight">毎日の習慣だからこそ効果絶大！そのまま読むだけでOK。</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
-                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 03</div>
-                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
-                         <i class="fas fa-music text-4xl text-orange-400"></i>
+                <!-- 特典3 -->
+                <div class="bg-white rounded-xl p-6 shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-1 border-b-4 border-orange-500 fade-up delay-300">
+                    <div class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded inline-block mb-3">特典 03</div>
+                    <div class="h-24 md:h-28 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden relative group">
+                         <i class="fas fa-music text-3xl md:text-4xl text-orange-300 group-hover:scale-110 transition duration-300"></i>
+                         <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </div>
-                    <h3 class="font-bold text-lg leading-tight mb-2">子供が食いつく！英語手遊び歌（動画付き）</h3>
-                    <p class="text-xs text-gray-600">親子で歌って踊れる！動画解説付きで分かりやすい。</p>
+                    <h3 class="font-bold text-base leading-tight mb-2">子供が食いつく！英語手遊び歌（動画付き）</h3>
+                    <p class="text-[10px] text-gray-600 leading-tight">親子で歌って踊れる！動画解説付きで分かりやすい。</p>
                 </div>
                 
-                 <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 md:col-start-1 md:ml-12 border-b-4 border-orange-500">
-                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 04</div>
-                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
-                         <i class="fas fa-check-square text-4xl text-orange-400"></i>
+                 <!-- 特典4 -->
+                 <div class="bg-white rounded-xl p-6 shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-1 md:col-start-1 md:ml-12 border-b-4 border-orange-500 fade-up delay-400">
+                    <div class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded inline-block mb-3">特典 04</div>
+                    <div class="h-24 md:h-28 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden relative group">
+                         <i class="fas fa-check-square text-3xl md:text-4xl text-orange-300 group-hover:scale-110 transition duration-300"></i>
+                         <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </div>
-                    <h3 class="font-bold text-lg leading-tight mb-2">語りかけ英語ママのNG行動チェックリスト</h3>
+                    <h3 class="font-bold text-base leading-tight mb-2">語りかけ英語ママのNG行動チェックリスト</h3>
                 </div>
 
-                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
-                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 05</div>
-                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
-                         <i class="fas fa-images text-4xl text-orange-400"></i>
+                <!-- 特典5 -->
+                <div class="bg-white rounded-xl p-6 shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-1 border-b-4 border-orange-500 fade-up delay-500">
+                    <div class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded inline-block mb-3">特典 05</div>
+                    <div class="h-24 md:h-28 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden relative group">
+                         <i class="fas fa-images text-3xl md:text-4xl text-orange-300 group-hover:scale-110 transition duration-300"></i>
+                         <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     </div>
-                    <h3 class="font-bold text-lg leading-tight mb-2">子供英語300語フラッシュカードデータ</h3>
+                    <h3 class="font-bold text-base leading-tight mb-2">子供英語300語フラッシュカードデータ</h3>
                 </div>
             </div>
             
-            <p class="text-center text-sm font-bold text-white mt-8 opacity-90">※予告なく配布を終了する場合があります。お早めにお受け取りください。</p>
+            <p class="text-center text-xs font-bold text-white mt-10 opacity-90 animate-pulse">※予告なく配布を終了する場合があります。お早めにお受け取りください。</p>
         </div>
     </section>
 
     <!-- 実績・お客様の声 (6名に増量) -->
-    <section class="py-16 bg-white">
+    <section class="py-12 md:py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">
+            <h2 class="text-xl md:text-2xl font-bold text-center text-gray-800 mb-8 md:mb-10 fade-up">
                 「教えなくていいから、続けられた」<br>
                 多くのお母さんが変化を実感しています。
             </h2>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <!-- Case 1 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+                <!-- Case 1 (余白を拡大: p-5 -> p-6) -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-100 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">C</div>
                         <div>
-                            <p class="font-bold text-gray-800">専業主婦 Cさん</p>
-                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                            <p class="font-bold text-gray-800 text-sm">専業主婦 Cさん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：4歳女の子</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             子供が話しかけてきても日本語で返してしまいもどかしかった…
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">瞬時に英語で応答できるように！なんと英検2級スピーキングで満点を獲得！</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Case 2 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-200 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">M</div>
                         <div>
-                            <p class="font-bold text-gray-800">お仕事ママ まりなさん</p>
-                            <p class="text-xs text-gray-500">お子さん：1歳女の子</p>
+                            <p class="font-bold text-gray-800 text-sm">お仕事ママ まりなさん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：1歳女の子</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             語りかけほぼゼロ。「私がやるなんて無理」と教室任せでした。
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">日常の9割が英語に！旦那さんとも英語で話すようになり、英語で人生が前向きに。</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Case 3 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-300 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">K</div>
                         <div>
-                            <p class="font-bold text-gray-800">専業主婦 かよさん</p>
-                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                            <p class="font-bold text-gray-800 text-sm">専業主婦 かよさん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：4歳女の子</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             挨拶くらいしか話すアイデアがなく、かけ流しだけでは伸び悩んでいた。
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">工作や遊びは英語オンリーでできるように！子供が「私は英語が得意」と感じる環境が作れました。</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Case 4 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-400 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">Y</div>
                         <div>
-                            <p class="font-bold text-gray-800">専業主婦 ゆいこさん</p>
-                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                            <p class="font-bold text-gray-800 text-sm">専業主婦 ゆいこさん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：4歳女の子</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             子供が英語で話してくれても続けられず、英語育児が義務感で辛かった。
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">知ってる単語で「言いたいこと」を英語にする力を習得。毎日親子で笑いながら英語で遊ぶのが日常に！</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Case 5 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-500 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">A</div>
                         <div>
-                            <p class="font-bold text-gray-800">専業主婦 あいこさん</p>
-                            <p class="text-xs text-gray-500">お子さん：1歳女の子</p>
+                            <p class="font-bold text-gray-800 text-sm">専業主婦 あいこさん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：1歳女の子</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             英語が苦手すぎて、中1レベルの英語も怪しい…という状況でした。
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">起床から毎日の語りかけが当たり前に！お決まりフレーズだけでなく自分の言葉で話せるようになりました。</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Case 6 -->
-                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                <!-- Case 6 (delay-100 から delay-600 に修正) -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100 fade-up delay-600 hover:bg-orange-100 transition">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow flex items-center justify-center text-gray-500 font-bold text-xs">M</div>
                         <div>
-                            <p class="font-bold text-gray-800">3歳＆0歳ママ みっちゃん</p>
-                            <p class="text-xs text-gray-500">お子さん：3歳・0歳</p>
+                            <p class="font-bold text-gray-800 text-sm">3歳＆0歳ママ みっちゃん</p>
+                            <p class="text-[10px] text-gray-500">お子さん：3歳・0歳</p>
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
-                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-xs">
+                            <span class="text-[10px] font-bold text-gray-400">Before</span><br>
                             Let's〜などワンパターンな声かけばかり。子供の発話も単語止まり。
                         </div>
-                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
-                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
-                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                        <div class="text-center text-orange-400 text-xs"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-xs">
+                            <span class="text-[10px] font-bold text-orange-500">After</span><br>
                             <span class="font-bold text-gray-800">自分で応用できるから語りかけが爆増！3歳のお子さんも文章で話し始め、笑顔の親子英会話を楽しめるように。</span>
                         </div>
                     </div>
@@ -549,12 +665,12 @@
 
     <!-- クロージング -->
     <section class="py-16 bg-gradient-mikan-light text-center border-t-2 border-orange-100">
-        <div class="container mx-auto px-4 max-w-2xl">
-            <h2 class="text-2xl md:text-3xl font-bold text-orange-900 mb-6">
+        <div class="container mx-auto px-4 max-w-xl">
+            <h2 class="text-xl md:text-2xl font-bold text-orange-900 mb-6 fade-up">
                 完璧じゃなくていい。自信がなくてもいい。<br>
                 大切なのは、一緒に使ってみること。
             </h2>
-            <p class="text-gray-700 mb-8 leading-relaxed font-medium">
+            <p class="text-gray-700 mb-8 leading-relaxed font-medium text-sm text-left fade-up delay-100">
                 子どもに英語を教えられなくても、子どもが「英語を当たり前に感じる環境」はお母さんにしか作れません。<br><br>
                 もし、「これなら私にもできそう」と少しでも感じたら、<br>
                 ぜひ、今日から一歩を踏み出してみてください。<br>
@@ -563,20 +679,19 @@
         </div>
     </section>
 
-    <!-- 講師プロフィール (最後に詳しく追加) -->
-    <section class="py-16 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">講師プロフィール</h2>
-            <div class="flex flex-col md:flex-row items-start gap-8 bg-orange-50 p-8 rounded-2xl shadow-sm border border-orange-100">
+    <!-- 講師プロフィール (最後に詳しく追加・実績バッジを移動) -->
+    <section class="py-12 md:py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-xl font-bold text-center text-gray-800 mb-8 fade-up">講師プロフィール</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 bg-orange-50 p-6 md:p-8 rounded-2xl shadow-lg border border-orange-100 fade-up delay-200">
                 <div class="w-full md:w-1/3 flex flex-col items-center text-center">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-orange-300 shadow-md mb-4">
-                        <img src="/api/placeholder/400/400" alt="Akiha Suzuki Profile" class="w-full h-full object-cover">
+                    <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-orange-300 shadow-md mb-4 transform hover:scale-105 transition">
+                        <img src="/api/placeholder/400/400" alt="Akiha Profile" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900">鈴木 明葉</h3>
-                    <p class="text-orange-600 font-bold mb-2">Akiha Suzuki</p>
-                    <div class="text-xs bg-white px-3 py-1 rounded-full border border-orange-200 shadow-sm mb-2 text-orange-800">語りかけ英語コーチ</div>
+                    <h3 class="text-lg font-bold text-gray-900">Akiha</h3>
+                    <div class="text-[10px] bg-white px-3 py-1 rounded-full border border-orange-200 shadow-sm mb-2 text-orange-800 font-bold">語りかけ英語コーチ</div>
                 </div>
-                <div class="w-full md:w-2/3 text-gray-700 leading-relaxed space-y-4">
+                <div class="w-full md:w-2/3 text-gray-700 leading-relaxed space-y-4 text-sm text-left">
                     <p>
                         <span class="font-bold border-b-2 border-orange-300">早稲田大学国際教養学部卒 / TOEIC965点 / 英検1級</span>
                     </p>
@@ -592,35 +707,91 @@
                         現在は「英語が特別視されず、ごく当たり前に使われる日本社会」を目指し、0-6歳のママ向けに語りかけ英語講座を主催。<br>
                         英語が苦手なママから「3ヶ月でこんなに話せるようになるなんて！」と感動の声が続出する人気講座となっている。
                     </p>
+                    
+                    <!-- 実績バッジ（移動分） -->
+                    <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-orange-200">
+                        <span class="bg-red-600 text-white font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md">
+                            <i class="fas fa-check-circle mr-1"></i>TOEIC 965点 / 英検1級
+                        </span>
+                        <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md border border-orange-200">
+                            <i class="fas fa-crown text-yellow-500 mr-1"></i>指導実績300名超
+                        </span>
+                        <span class="bg-yellow-400 text-yellow-900 font-bold py-1 px-3 rounded-full text-[10px] md:text-xs shadow-md">
+                            <i class="fas fa-book text-yellow-900 mr-1"></i>Amazonランキング1位
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 固定フッターボタン (Mobile CTA) -->
-    <div class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] z-50 md:hidden border-t border-gray-100">
-        <a href="#register" class="block w-full btn-gradient-orange text-white font-bold text-center py-4 rounded-full shadow-lg animate-pulse">
+    <div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md p-3 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] z-50 md:hidden border-t border-gray-100 fade-up delay-500">
+        <!-- スマホ用固定ボタン：フォントサイズを text-base に落として一行に収める -->
+        <a href="#register" class="block w-full btn-gradient-orange text-white font-bold text-center py-3 rounded-full shadow-lg animate-pulse text-base">
             無料で動画を受け取る <i class="fas fa-play-circle ml-1"></i>
         </a>
     </div>
 
     <!-- PC用 最終CTAエリア -->
-    <section id="register" class="py-12 bg-orange-950 text-white mb-16 md:mb-0">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-orange-300 font-bold mb-4 text-lg">\ 完全無料・限定公開中 /</p>
-            <div class="flex justify-center space-x-4 mb-6 text-3xl text-orange-200/50">
-                <i class="fas fa-book"></i>
-                <i class="fas fa-video"></i>
-                <i class="fas fa-music"></i>
+    <section id="register" class="py-16 bg-orange-950 text-white mb-20 md:mb-0 relative overflow-hidden">
+        <!-- 背景装飾 -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyIiBmaWxsPSIjZmZmIi8+PC9zdmc+')] opacity-20"></div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <p class="text-orange-300 font-bold mb-4 text-base tracking-widest">\ 完全無料・限定公開中 /</p>
+            <div class="flex justify-center space-x-6 mb-8 text-3xl text-orange-200/50">
+                <i class="fas fa-book animate-bounce delay-100"></i>
+                <i class="fas fa-video animate-bounce delay-200"></i>
+                <i class="fas fa-music animate-bounce delay-300"></i>
             </div>
             <!-- CTAボタン: オレンジグラデーション -->
-            <a href="#" class="inline-block w-full max-w-xl btn-gradient-orange text-white font-black text-2xl py-5 rounded-full shadow-xl transform transition">
+            <a href="#" class="inline-block w-full max-w-lg btn-gradient-orange text-white font-black text-lg md:text-xl py-5 rounded-full shadow-[0_0_30px_rgba(234,88,12,0.6)] transform transition hover:scale-105">
                 無料で動画を受け取る
             </a>
-            <p class="mt-4 text-sm text-orange-200">※30秒で視聴スタート・いつでもブロック可能</p>
-            <p class="mt-8 text-xs text-orange-400">Copyright © Akiha English All Rights Reserved.</p>
+            <p class="mt-10 text-[10px] text-orange-400">Copyright © Akiha English All Rights Reserved.</p>
         </div>
     </section>
 
+    <!-- スクロール検知スクリプト -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // 一度アニメーションしたら監視を解除
+                    }
+                });
+            }, observerOptions);
+
+            // アニメーション対象の要素を取得して監視開始
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-right, .fade-left, .scale-in, .marker-orange');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // ヘッダーのスクロール制御
+            let lastScrollY = window.scrollY;
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    if (window.scrollY > lastScrollY) {
+                        // 下にスクロールで隠す
+                        header.style.transform = 'translateY(-100%)';
+                    } else {
+                        // 上にスクロールで表示
+                        header.style.transform = 'translateY(0)';
+                    }
+                }
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
 </body>
 </html>
