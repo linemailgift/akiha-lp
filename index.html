@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おうちde語りかけ英語 | AKIHA式5日間無料プログラム</title>
+    <meta name="description" content="英語が苦手なママでも大丈夫。中学英語の語りかけだけで、子供が勝手に英語を話し出す魔法のメソッド。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        /* マーケ博士風のリッチなグラデーション（オレンジベース） */
+        .bg-gradient-mikan-premium {
+            background: linear-gradient(135deg, #FF9100 0%, #FF6D00 50%, #FF3D00 100%);
+        }
+        .bg-gradient-mikan-light {
+            background: linear-gradient(180deg, #FFF7ED 0%, #FFEDD5 100%);
+        }
+        .bg-gradient-gold-orange {
+            background: linear-gradient(135deg, #FDBA74 0%, #FB923C 50%, #EA580C 100%);
+        }
+        /* リッチなボタン用グラデーション */
+        .btn-gradient-orange {
+            background: linear-gradient(to right, #F97316, #DC2626);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient-orange:hover {
+            background: linear-gradient(to right, #EA580C, #B91C1C);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.3);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .box-shadow-card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* スマホで見やすい強調マーカー */
+        .marker-orange {
+            background: linear-gradient(transparent 60%, #FECACA 60%);
+        }
+    </style>
+</head>
+<body class="bg-orange-50 text-gray-800 antialiased">
+
+    <!-- ヘッダー（権威性バッジ） -->
+    <header class="bg-white py-2 shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="font-bold text-orange-600 text-lg">AKIHA English</div>
+            <div class="flex gap-2">
+                <!-- オレンジで統一 -->
+                <div class="text-xs font-bold bg-orange-600 text-white py-1 px-3 rounded-full shadow-md">
+                    TOEIC 965点 / 英検1級
+                </div>
+                <div class="text-xs font-bold bg-yellow-400 text-yellow-900 py-1 px-3 rounded-full shadow-md hidden sm:block">
+                    Amazonランキング1位
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ファーストビュー -->
+    <section class="pt-24 pb-12 bg-gradient-mikan-premium text-white relative overflow-hidden">
+        <!-- 背景装飾 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <i class="fas fa-comment-dots text-9xl absolute -top-10 -left-10 transform rotate-12"></i>
+            <i class="fas fa-child text-9xl absolute bottom-0 right-0 transform -rotate-12"></i>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <!-- 実績バッジエリア -->
+            <div class="flex justify-center gap-2 mb-4 flex-wrap">
+                <!-- ここもオレンジ/赤系で統一 -->
+                <span class="bg-red-600 text-white font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-white/30">
+                    <i class="fas fa-check-circle mr-1"></i>TOEIC 965点 / 英検1級
+                </span>
+                <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-yellow-400">
+                    <i class="fas fa-crown text-yellow-500 mr-1"></i>指導実績300名超
+                </span>
+                <span class="bg-white text-orange-600 font-bold py-1 px-3 rounded-full text-sm shadow-lg border-2 border-yellow-400">
+                    <i class="fas fa-book text-yellow-500 mr-1"></i>Amazon1位
+                </span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+                英語が苦手なママでも大丈夫。<br>
+                <span class="text-yellow-100">「教えない」「頑張らない」。</span>
+            </h1>
+            
+            <p class="text-lg md:text-2xl font-bold mb-6 bg-orange-900 bg-opacity-20 inline-block px-4 py-2 rounded-lg border border-white/20">
+                中学英語の“つぶやき”だけで<br class="md:hidden">
+                子どもが「英語を当たり前」に感じる家庭はつくれます。
+            </p>
+
+            <!-- メイン画像 -->
+            <div class="my-6 flex justify-center">
+                 <!-- プレースホルダー画像 -->
+                <div class="w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden border-4 border-white bg-gray-200 aspect-video relative group">
+                     <img src="/api/placeholder/800/450" alt="明葉さんとお子さんが笑顔で話している様子" class="w-full h-full object-cover">
+                     <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
+                        <i class="fas fa-play-circle text-white text-6xl opacity-80"></i>
+                     </div>
+                </div>
+            </div>
+
+            <!-- オファー -->
+            <div class="bg-white text-gray-800 rounded-xl p-6 max-w-2xl mx-auto shadow-2xl border-4 border-yellow-400 relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-600 text-white font-bold px-6 py-1 rounded-full shadow-md text-sm whitespace-nowrap">
+                    このページを見た方限定
+                </div>
+                <p class="font-bold text-orange-600 mb-2">これまで有料講座でしか話してこなかった</p>
+                <h2 class="text-xl md:text-2xl font-black mb-4">「AKIHA式語りかけ英語・習得セミナー」<br>完全版動画を無料プレゼント</h2>
+                
+                <!-- CTAボタン: オレンジグラデーションに変更 -->
+                <a href="#register" class="block w-full btn-gradient-orange text-white font-black text-xl md:text-2xl py-4 rounded-full shadow-lg transform transition animate-pulse">
+                    無料で動画を受け取る <i class="fas fa-chevron-right ml-2"></i>
+                    <div class="text-xs font-normal mt-1 opacity-90">※30秒で視聴スタート</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 共感・お悩みチェック -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-orange-800 mb-8">
+                お子さんの将来のために英語を始めたい。<br>
+                <span class="marker-orange">でも、こんな不安はありませんか？</span>
+            </h2>
+
+            <div class="bg-orange-50 rounded-2xl p-6 md:p-8 shadow-inner border border-orange-100">
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
+                        <span class="font-bold text-gray-700 text-lg">英語で困らない人生を歩んでほしいけど、<span class="text-red-500 border-b-2 border-red-500">自分は英語が苦手</span>。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
+                        <span class="font-bold text-gray-700 text-lg">発音や文法に自信がなく、<span class="text-red-500 border-b-2 border-red-500">教えるのが怖い</span>。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
+                        <span class="font-bold text-gray-700 text-lg">家で英語を話すのは、正直ちょっと<span class="text-red-500 border-b-2 border-red-500">恥ずかしい</span>。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 text-xl mt-1 mr-3"></i>
+                        <span class="font-bold text-gray-700 text-lg">教材を買っても、結局使いこなせず<span class="text-red-500 border-b-2 border-red-500">挫折してしまった</span>。</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-lg leading-relaxed">
+                    もし一つでも当てはまったら、それはあなただけの悩みではありません。<br>
+                    そして、うまくいかなかったのは、<span class="font-bold text-orange-600 text-xl">あなたのせいではありません</span>。
+                </p>
+                <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 text-left">
+                    <p class="font-bold text-red-800">多くのお母さんがつまずく理由はたった一つ。</p>
+                    <p class="text-red-700 mt-2 font-bold text-lg">「英語を正しく教えなければならない」と思い込んでしまっていること。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリーセクション -->
+    <section class="py-16 bg-orange-50/50">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-8">
+                <span class="bg-orange-100 text-orange-600 font-bold py-1 px-4 rounded-full border border-orange-200">My Story</span>
+                <h2 class="text-3xl font-bold mt-4 text-gray-800">早稲田卒・TOEIC965点。<br>それでも私はアメリカで<span class="text-orange-600">「透明人間」</span>でした。</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-6 mb-8">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-orange-300 flex-shrink-0 shadow-lg">
+                    <!-- 明葉さんの顔写真 -->
+                    <img src="/api/placeholder/200/200" alt="Akiha Suzuki" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500 font-bold mb-1">語りかけ英語コーチ</p>
+                    <h3 class="text-xl font-bold text-gray-800">Akiha（鈴木 明葉）</h3>
+                    <p class="text-sm mt-2 text-gray-600">
+                        今でこそ英語のお仕事をしていますが、実は私自身、長い間「英語が話せないこと」に強いコンプレックスを持っていました。
+                        学生時代、必死に勉強して憧れのアメリカ留学へ。でも、いざ現地に行くと、話せない・聞き取れない・輪に入れない。
+                    </p>
+                </div>
+            </div>
+
+            <div class="prose prose-lg text-gray-700 mx-auto">
+                <p>
+                    「もういいわ」とため息をつかれ、まるで自分が<span class="marker-orange font-bold">「透明人間」</span>になったかのような孤独を味わいました。
+                    「こんなに頑張ってきたのに、どうして話せないんだろう」
+                </p>
+                <p>
+                    そう悩み続けた私を変えたのは、ある<span class="font-bold text-orange-600">「衝撃の出来事」</span>でした。
+                </p>
+
+                <div class="bg-white p-6 rounded-xl shadow-md my-8 border-l-8 border-orange-400">
+                    <h4 class="font-bold text-lg mb-4 text-orange-800"><i class="fas fa-lightbulb mr-2"></i>私の人生を変えた、ウクライナ人ママの一言</h4>
+                    <p class="mb-4">
+                        再び渡米した際に出会った、ウクライナ人のママ友、ハナ。
+                        ある日、彼女と<span class="font-bold">「子供の予防接種」</span>の話になった時のことです。
+                    </p>
+                    <p class="mb-4">
+                        私は頭の中で必死に英作文をしていました。<br>
+                        <span class="text-sm text-gray-500">（予防接種ってvaccinationだよね…受けさせるって使役動詞のget？嫌がるって…）</span><br>
+                        <span class="font-mono bg-gray-100 p-1 rounded text-gray-500 text-sm block mt-1">"I'm planning on getting my child vaccinated..."</span>
+                    </p>
+                    <p class="mb-4 font-bold">
+                        難しく考えすぎて、言葉に詰まり、結局何も言えませんでした。
+                        その横で、ハナはこう言ったのです。
+                    </p>
+                    <div class="bg-orange-50 p-4 rounded-lg border-2 border-orange-200">
+                        <p class="text-xl font-bold text-orange-600">"She will have a shot. But she doesn't like it."</p>
+                        <p class="text-sm text-gray-600 mt-1">（彼女、注射するのよ。でも嫌いなのよね〜）</p>
+                    </div>
+                </div>
+
+                <p class="font-bold text-xl text-center mt-8">
+                    そこで私は気づきました。<br>
+                    <span class="text-orange-600 text-2xl">「お母さんが先生になる必要はない。<br>知っている言葉を使えばいいんだ！」</span>と。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- メソッドセクション（アジサイ比較） -->
+    <section class="py-16 bg-white relative">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-4 text-orange-800">
+                英語を教えなくていい。<br>
+                <span class="marker-orange">「魔法のテンプレート」で言い換えるだけ。</span>
+            </h2>
+            <p class="text-center mb-10 text-gray-600">難しい単語を覚える必要はありません。知っている中学単語で「言い換える力」がカギです。</p>
+
+            <!-- アジサイの比較図 -->
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <!-- Bad Case -->
+                <div class="bg-gray-100 p-6 rounded-2xl border-2 border-gray-300 relative opacity-70">
+                    <div class="absolute -top-4 left-4 bg-gray-500 text-white font-bold px-4 py-1 rounded-full text-sm">従来の考え方</div>
+                    <div class="text-center mt-4">
+                        <i class="fas fa-times text-6xl text-gray-300 mb-4"></i>
+                        <h3 class="font-bold text-gray-600 mb-2">難しい英語 (Native)</h3>
+                        <p class="text-sm mb-4">アジサイってなんて言うんだっけ？</p>
+                        <div class="bg-white p-3 rounded font-mono text-gray-500 font-bold border border-gray-300">
+                            Hydrangea<br>
+                            <span class="text-xs font-normal">（ハイドランジア）</span>
+                        </div>
+                        <p class="text-xs text-red-500 mt-2 font-bold">× 覚えても忘れる・発音が難しい</p>
+                    </div>
+                </div>
+
+                <!-- Good Case -->
+                <div class="bg-orange-50 p-8 rounded-2xl border-4 border-orange-500 relative shadow-xl transform md:scale-105 z-10">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white font-bold px-6 py-2 rounded-full shadow-md">AKIHA式</div>
+                    <div class="text-center mt-4">
+                        <i class="fas fa-circle-check text-6xl text-orange-500 mb-4 animate-bounce"></i>
+                        <h3 class="font-bold text-orange-800 text-xl mb-2">シンプル英語 (Simple)</h3>
+                        <p class="text-sm mb-4">中1単語だけで言い換える！</p>
+                        <div class="bg-white p-4 rounded-lg font-bold text-orange-600 text-xl border-2 border-orange-200 shadow-sm">
+                            A flower in the rainy season<br>
+                            <span class="text-sm font-normal text-gray-600">（雨季の花）</span>
+                        </div>
+                        <p class="text-sm text-orange-600 mt-3 font-bold">◎ 誰にでも伝わる！</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-10 text-lg font-bold">
+                この<span class="text-orange-600 text-2xl">「魔法のテンプレート」</span>さえあれば、<br>
+                英語が苦手なお母さんでも、パズルのように言葉がスラスラ出てくるようになります。
+            </p>
+        </div>
+    </section>
+
+    <!-- 動画オファーセクション: オレンジに統一するため濃いブラウンを使用 -->
+    <section class="py-16 bg-orange-950 text-white">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-orange-200">
+                この動画1本で、<br>「英語苦手ママ」を卒業できます。
+            </h2>
+            <p class="text-orange-100 mb-8">忙しいママでも、家事の合間に見るだけで「おうち英語」の正解がわかります。</p>
+
+            <!-- 動画サムネイル -->
+            <div class="relative w-full max-w-3xl mx-auto aspect-video bg-black rounded-xl shadow-2xl border border-orange-800 mb-8 group cursor-pointer">
+                <img src="/api/placeholder/800/450" alt="Video Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition border-2 border-white">
+                        <i class="fas fa-play text-3xl ml-2 text-white"></i>
+                    </div>
+                </div>
+                <div class="absolute bottom-4 left-4 bg-black bg-opacity-70 px-3 py-1 rounded text-sm text-orange-100">
+                    <i class="fas fa-clock mr-1"></i> 視聴時間：約45分
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
+                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 01</div>
+                    <div class="font-bold">子供の英語力を劇的に伸ばす「最速の方法」</div>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
+                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 02</div>
+                    <div class="font-bold">語彙力ゼロでもOK！フレーズが無限に増える「魔法のテンプレート」</div>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
+                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 03</div>
+                    <div class="font-bold">なぜ挫折する？多くの人がハマる「英語学習の落とし穴」</div>
+                </div>
+                <div class="bg-white/10 p-4 rounded-lg border-l-4 border-orange-500">
+                    <div class="text-orange-300 font-bold text-sm mb-1">Topic 04</div>
+                    <div class="font-bold">今日から英語が口から出る！「語りかけ実践ワーク」</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A 子供の拒絶 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <div class="bg-gradient-mikan-light rounded-2xl p-8 shadow-lg relative border border-orange-200">
+                <div class="absolute -top-6 -left-6 bg-orange-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-md border-2 border-white">
+                    Q
+                </div>
+                <h3 class="text-xl font-bold text-orange-900 mb-4 pl-8">「英語やめて！」と言われたらどうする？</h3>
+                <p class="text-gray-800 leading-relaxed font-medium">
+                    実は、それが<span class="font-bold text-red-500 text-lg">正解の反応</span>なんです。<br>
+                    私の娘も最初は「日本語で話して！」と嫌がりました。<br><br>
+                    その時、私はどうしたか？<br>
+                    <span class="font-bold bg-white px-2 py-1 rounded shadow-sm text-orange-800">無理に続けることはしませんでした。</span><br>
+                    嫌がったらやめる。少し時間をおいて、またしれっとつぶやく（笑）。<br>
+                    この繰り返しで、今では娘から「リンゴは英語でバナーナだよ！」とボケてくるほど英語が大好きになりました。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 豪華特典セクション: ゴールドオレンジグラデーション -->
+    <section class="py-16 bg-gradient-gold-orange text-gray-900 overflow-hidden relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-10">
+                <div class="inline-block bg-red-600 text-white font-bold px-4 py-1 rounded-full mb-4 animate-bounce shadow-lg">
+                    さらに！このページ限定
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black text-white drop-shadow-md">
+                    豪華5大特典を<br>無料プレゼント！
+                </h2>
+                <p class="font-bold text-white mt-4 text-xl drop-shadow-sm">「何をつぶやけばいいかわからない」をゼロにします。</p>
+            </div>
+
+            <!-- 特典カードグリッド -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
+                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 01</div>
+                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
+                         <i class="fas fa-book text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg leading-tight mb-2">ベストセラー書籍「おうちde語りかけ英語」元原稿</h3>
+                    <p class="text-xs text-gray-600">有料級のノウハウを全公開！読むだけでマインドが変わります。</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
+                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 02</div>
+                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
+                         <i class="fas fa-tooth text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg leading-tight mb-2">今日から使える！語りかけ歯磨きフレーズ集</h3>
+                    <p class="text-xs text-gray-600">毎日の習慣だからこそ効果絶大！そのまま読むだけでOK。</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
+                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 03</div>
+                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
+                         <i class="fas fa-music text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg leading-tight mb-2">子供が食いつく！英語手遊び歌（動画付き）</h3>
+                    <p class="text-xs text-gray-600">親子で歌って踊れる！動画解説付きで分かりやすい。</p>
+                </div>
+                
+                 <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 md:col-start-1 md:ml-12 border-b-4 border-orange-500">
+                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 04</div>
+                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
+                         <i class="fas fa-check-square text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg leading-tight mb-2">語りかけ英語ママのNG行動チェックリスト</h3>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-xl transform hover:-translate-y-1 transition duration-300 md:col-span-1 border-b-4 border-orange-500">
+                    <div class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded inline-block mb-2">特典 05</div>
+                    <div class="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center overflow-hidden">
+                         <i class="fas fa-images text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg leading-tight mb-2">子供英語300語フラッシュカードデータ</h3>
+                </div>
+            </div>
+            
+            <p class="text-center text-sm font-bold text-white mt-8 opacity-90">※予告なく配布を終了する場合があります。お早めにお受け取りください。</p>
+        </div>
+    </section>
+
+    <!-- 実績・お客様の声 (6名に増量) -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">
+                「教えなくていいから、続けられた」<br>
+                多くのお母さんが変化を実感しています。
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Case 1 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">専業主婦 Cさん</p>
+                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            子供が話しかけてきても日本語で返してしまいもどかしかった…
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">瞬時に英語で応答できるように！なんと英検2級スピーキングで満点を獲得！</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">お仕事ママ まりなさん</p>
+                            <p class="text-xs text-gray-500">お子さん：1歳女の子</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            語りかけほぼゼロ。「私がやるなんて無理」と教室任せでした。
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">日常の9割が英語に！旦那さんとも英語で話すようになり、英語で人生が前向きに。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">専業主婦 かよさん</p>
+                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            挨拶くらいしか話すアイデアがなく、かけ流しだけでは伸び悩んでいた。
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">工作や遊びは英語オンリーでできるように！子供が「私は英語が得意」と感じる環境が作れました。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">専業主婦 ゆいこさん</p>
+                            <p class="text-xs text-gray-500">お子さん：4歳女の子</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            子供が英語で話してくれても続けられず、英語育児が義務感で辛かった。
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">知ってる単語で「言いたいこと」を英語にする力を習得。毎日親子で笑いながら英語で遊ぶのが日常に！</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 5 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">専業主婦 あいこさん</p>
+                            <p class="text-xs text-gray-500">お子さん：1歳女の子</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            英語が苦手すぎて、中1レベルの英語も怪しい…という状況でした。
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">起床から毎日の語りかけが当たり前に！お決まりフレーズだけでなく自分の言葉で話せるようになりました。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 6 -->
+                <div class="bg-orange-50 rounded-xl p-6 shadow box-shadow-card border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 border-2 border-white shadow"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">3歳＆0歳ママ みっちゃん</p>
+                            <p class="text-xs text-gray-500">お子さん：3歳・0歳</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-gray-400 text-sm">
+                            <span class="text-xs font-bold text-gray-400">Before</span><br>
+                            Let's〜などワンパターンな声かけばかり。子供の発話も単語止まり。
+                        </div>
+                        <div class="text-center text-orange-400"><i class="fas fa-arrow-down"></i></div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-500 shadow-sm text-sm">
+                            <span class="text-xs font-bold text-orange-500">After</span><br>
+                            <span class="font-bold text-gray-800">自分で応用できるから語りかけが爆増！3歳のお子さんも文章で話し始め、笑顔の親子英会話を楽しめるように。</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- クロージング -->
+    <section class="py-16 bg-gradient-mikan-light text-center border-t-2 border-orange-100">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-orange-900 mb-6">
+                完璧じゃなくていい。自信がなくてもいい。<br>
+                大切なのは、一緒に使ってみること。
+            </h2>
+            <p class="text-gray-700 mb-8 leading-relaxed font-medium">
+                子どもに英語を教えられなくても、子どもが「英語を当たり前に感じる環境」はお母さんにしか作れません。<br><br>
+                もし、「これなら私にもできそう」と少しでも感じたら、<br>
+                ぜひ、今日から一歩を踏み出してみてください。<br>
+                私と一緒に、お子さんとの新しいコミュニケーションを楽しみましょう。
+            </p>
+        </div>
+    </section>
+
+    <!-- 講師プロフィール (最後に詳しく追加) -->
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">講師プロフィール</h2>
+            <div class="flex flex-col md:flex-row items-start gap-8 bg-orange-50 p-8 rounded-2xl shadow-sm border border-orange-100">
+                <div class="w-full md:w-1/3 flex flex-col items-center text-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-orange-300 shadow-md mb-4">
+                        <img src="/api/placeholder/400/400" alt="Akiha Suzuki Profile" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">鈴木 明葉</h3>
+                    <p class="text-orange-600 font-bold mb-2">Akiha Suzuki</p>
+                    <div class="text-xs bg-white px-3 py-1 rounded-full border border-orange-200 shadow-sm mb-2 text-orange-800">語りかけ英語コーチ</div>
+                </div>
+                <div class="w-full md:w-2/3 text-gray-700 leading-relaxed space-y-4">
+                    <p>
+                        <span class="font-bold border-b-2 border-orange-300">早稲田大学国際教養学部卒 / TOEIC965点 / 英検1級</span>
+                    </p>
+                    <p>
+                        神奈川県生まれ、2児（8歳・6歳）の母。<br>
+                        夫の転勤先のアメリカに4年住み、現地で出産育児を経験。
+                    </p>
+                    <p>
+                        自身の「英語が話せない」という強烈なコンプレックスと挫折、そこから「シンプル英語」に気づき克服した経験を持つ。<br>
+                        帰国後は外語専門学校で英会話講師として300人以上の生徒を指導。
+                    </p>
+                    <p>
+                        現在は「英語が特別視されず、ごく当たり前に使われる日本社会」を目指し、0-6歳のママ向けに語りかけ英語講座を主催。<br>
+                        英語が苦手なママから「3ヶ月でこんなに話せるようになるなんて！」と感動の声が続出する人気講座となっている。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 固定フッターボタン (Mobile CTA) -->
+    <div class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] z-50 md:hidden border-t border-gray-100">
+        <a href="#register" class="block w-full btn-gradient-orange text-white font-bold text-center py-4 rounded-full shadow-lg animate-pulse">
+            無料で動画を受け取る <i class="fas fa-play-circle ml-1"></i>
+        </a>
+    </div>
+
+    <!-- PC用 最終CTAエリア -->
+    <section id="register" class="py-12 bg-orange-950 text-white mb-16 md:mb-0">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-orange-300 font-bold mb-4 text-lg">\ 完全無料・限定公開中 /</p>
+            <div class="flex justify-center space-x-4 mb-6 text-3xl text-orange-200/50">
+                <i class="fas fa-book"></i>
+                <i class="fas fa-video"></i>
+                <i class="fas fa-music"></i>
+            </div>
+            <!-- CTAボタン: オレンジグラデーション -->
+            <a href="#" class="inline-block w-full max-w-xl btn-gradient-orange text-white font-black text-2xl py-5 rounded-full shadow-xl transform transition">
+                無料で動画を受け取る
+            </a>
+            <p class="mt-4 text-sm text-orange-200">※30秒で視聴スタート・いつでもブロック可能</p>
+            <p class="mt-8 text-xs text-orange-400">Copyright © Akiha English All Rights Reserved.</p>
+        </div>
+    </section>
+
+</body>
+</html>
